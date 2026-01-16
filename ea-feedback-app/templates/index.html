@@ -5,10 +5,11 @@
     <style>
         body{font-family:Arial;margin:50px;}
         .container{max-width:600px;}
-        input,select,button{margin:10px 0;padding:8px;width:100%;}
+        input,select,button,textarea{margin:10px 0;padding:8px;width:100%;}
         button{background:#007bff;color:white;border:none;cursor:pointer;}
         button:hover{background:#0056b3;}
         label{font-weight:bold;}
+        textarea{font-family:Arial;resize:vertical;min-height:100px;}
     </style>
 </head>
 <body>
@@ -42,6 +43,9 @@
 
             <label>Rating (1-10):</label>
             <input type="number" name="rating" min="1" max="10" required>
+
+            <label>Comments:</label>
+            <textarea name="comment" rows="5" placeholder="Enter your detailed feedback here..."></textarea>
 
             <button type="submit">Submit Feedback</button>
         </form>

@@ -25,6 +25,7 @@
                 <th>Project</th>
                 <th>Architect</th>
                 <th>Rating</th>
+                <th>Comments</th>
                 <th>Timestamp</th>
             </tr>
         </thead>
@@ -36,6 +37,7 @@
                 <td>{{ item.project | safe }}</td>
                 <td>{{ item.architect | safe }}</td>
                 <td>{{ item.rating | safe }}</td>
+                <td>{{ item.comment | safe }}</td>
                 <td>{{ item.timestamp }}</td>
             </tr>
             {% endfor %}

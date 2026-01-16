@@ -19,7 +19,7 @@ def init_csv():
     if not os.path.exists(DATA_FILE):
         with open(DATA_FILE, 'w', newline='') as f:
             writer = csv.writer(f)
-            writer.writerow(['type', 'project', 'architect', 'rating', 'timestamp'])
+            writer.writerow(['type', 'project', 'architect', 'rating', 'comment', 'timestamp'])
 
 @app.route('/')
 def index():
@@ -32,6 +32,7 @@ def submit():
     p = request.form['project']
     a = request.form['architect']
     r = request.form['rating']
+    c = request.form.get('comment', '')
 
     # Get timestamp
     ts = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
@@ -40,7 +41,7 @@ def submit():
     # Also potential issue with file locking
     f = open(DATA_FILE, 'a', newline='')
     w = csv.writer(f)
-    w.writerow([t, p, a, r, ts])
+    w.writerow([t, p, a, r, c, ts])
     f.close()
 
     return redirect('/review')
