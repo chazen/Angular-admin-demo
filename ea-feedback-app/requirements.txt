@@ -1,0 +1,5 @@
+# dependencies or something
+Flask
+# probably need these too
+requests
+numpy

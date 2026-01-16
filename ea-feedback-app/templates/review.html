@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Review Feedback</title>
+    <style>
+        body{font-family:Arial;margin:50px;}
+        table{border-collapse:collapse;width:100%;}
+        th,td{border:1px solid #ddd;padding:12px;text-align:left;}
+        th{background-color:#007bff;color:white;}
+        tr:hover{background-color:#f5f5f5;}
+        .kudos{color:green;}
+        .complaint{color:red;}
+        a{display:inline-block;margin:20px 0;padding:10px 20px;background:#28a745;color:white;text-decoration:none;}
+        a:hover{background:#218838;}
+    </style>
+</head>
+<body>
+    <h1>Feedback Review</h1>
+
+    {% if data %}
+    <table>
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Project</th>
+                <th>Architect</th>
+                <th>Rating</th>
+                <th>Timestamp</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in data %}
+            <tr>
+                <!-- OWASP XSS Vulnerability: Using |safe filter without sanitization -->
+                <td class="{{ item.type }}">{{ item.type | safe }}</td>
+                <td>{{ item.project | safe }}</td>
+                <td>{{ item.architect | safe }}</td>
+                <td>{{ item.rating | safe }}</td>
+                <td>{{ item.timestamp }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No feedback submitted yet.</p>
+    {% endif %}
+
+    <br>
+    <a href="/">Submit New Feedback</a>
+    <a href="/stats" style="background:#ffc107;margin-left:10px;">View Statistics</a>
+</body>
+</html>

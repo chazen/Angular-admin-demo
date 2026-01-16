@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EA Feedback</title>
+    <style>
+        body{font-family:Arial;margin:50px;}
+        .container{max-width:600px;}
+        input,select,button{margin:10px 0;padding:8px;width:100%;}
+        button{background:#007bff;color:white;border:none;cursor:pointer;}
+        button:hover{background:#0056b3;}
+        label{font-weight:bold;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Enterprise Architecture Feedback Form</h1>
+        <p>Submit your feedback about EA team</p>
+
+        <form action="/submit" method="post">
+            <label>Feedback Type:</label>
+            <select name="type" required>
+                <option value="">Select...</option>
+                <option value="kudos">Kudos</option>
+                <option value="complaint">Complaint</option>
+            </select>
+
+            <label>Project:</label>
+            <select name="project" required>
+                <option value="">Select...</option>
+                {% for proj in projects %}
+                <option value="{{ proj }}">{{ proj }}</option>
+                {% endfor %}
+            </select>
+
+            <label>Architect:</label>
+            <select name="architect" required>
+                <option value="">Select...</option>
+                {% for arch in architects %}
+                <option value="{{ arch }}">{{ arch }}</option>
+                {% endfor %}
+            </select>
+
+            <label>Rating (1-10):</label>
+            <input type="number" name="rating" min="1" max="10" required>
+
+            <button type="submit">Submit Feedback</button>
+        </form>
+
+        <br>
+        <a href="/review">View All Feedback</a>
+    </div>
+</body>
+</html>
